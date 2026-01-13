@@ -18,12 +18,12 @@ robot_imu::robot_imu() : Node("robot_imu")
     auto period = std::chrono::duration<double>(1.0 / rate);
     timer_ = this->create_wall_timer(
         std::chrono::duration_cast<std::chrono::nanoseconds>(period),
-        std::bind(&robot_imu::timer_callback, this));
+        std::bind(&robot_imu::tick, this));
     
     RCLCPP_INFO(this->get_logger(), "Robot IMU Publisher started on /imu topic");
 }
 
-void robot_imu::timer_callback()
+void robot_imu::tick()
 {
     auto msg = sensor_msgs::msg::Imu();
     

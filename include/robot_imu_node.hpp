@@ -12,7 +12,7 @@ public:
     robot_imu();
 
 private:
-    void timer_callback();
+    void tick();
     
     std::unique_ptr<ctre::phoenix6::hardware::Pigeon2> pigeon_;
     rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr publisher_;
